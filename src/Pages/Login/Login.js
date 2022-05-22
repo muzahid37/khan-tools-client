@@ -1,11 +1,19 @@
 import React from "react";
 import auth from "../../firebase.init";
-import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import Loading from "../Sheared/Loading";
 
 const Login = () => {
-  const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+  const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+  const [
+    signInWithEmailAndPassword,
+    user,
+    loading,
+    error,
+  ] = useSignInWithEmailAndPassword(auth);
+  let signInError;
   const navigate = useNavigate();
   const {
     register,
@@ -13,10 +21,18 @@ const Login = () => {
     handleSubmit,
   } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
+    signInWithEmailAndPassword(data.email , data.password)
   };
-  if (user) {
+  if(error||gError){
+    signInError=<p className="text-red-500">{error?.message||gError?.message}</p>
+  }
+  if(loading|| gLoading){
+      return <Loading></Loading>
+  }
+  if (user|| gUser) {
     // navigate'/'
+    console.log(user)
   }
 
   return (
@@ -92,7 +108,7 @@ const Login = () => {
               </label>
             </div>
 
-            {/* {signInError} */}
+            {signInError}
             <input
               className="btn w-full max-w-xs text-white"
               type="submit"
