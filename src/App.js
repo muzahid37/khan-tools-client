@@ -7,6 +7,8 @@ import Blogs from './Pages/Blogs/Blogs';
 import MyPortfolio from './Pages/MyPortfolio/MyPortfolio';
 import Login from './Pages/Login/Login';
 import SignUp from './Pages/Login/SignUp';
+import Purchase from './Pages/Purchase/Purchase ';
+import RequireAuth from './Pages/Login/RequireAuth';
 
 function App() {
   return (
@@ -18,6 +20,11 @@ function App() {
         <Route path='/myportfolio' element={<MyPortfolio></MyPortfolio>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signup' element={<SignUp></SignUp>}></Route>
+        <Route path='/purchas' element={
+          <RequireAuth>
+            <Purchase></Purchase>
+          </RequireAuth>
+        }></Route>
       </Routes>
     </div>
   );
