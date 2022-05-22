@@ -1,10 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
-import Home from './Page/Home/Home';
-import Navbar from './Page/Sheared/Navbar';
+import Home from './Pages/Home/Home';
+import Navbar from './Pages/Sheared/Navbar';
 import { Route, Routes } from 'react-router-dom';
-import Blogs from './Page/Blogs/Blogs';
-import MyPortfolio from './Page/MyPortfolio/MyPortfolio';
+import Blogs from './Pages/Blogs/Blogs';
+import MyPortfolio from './Pages/MyPortfolio/MyPortfolio';
+import Login from './Pages/Login/Login';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/blog' element={<Blogs></Blogs>}></Route>
         <Route path='/myportfolio' element={<MyPortfolio></MyPortfolio>}></Route>
+        <Route path='/login' element={<Login></Login>}></Route>
       </Routes>
     </div>
   );
