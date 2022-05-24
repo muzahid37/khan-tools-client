@@ -1,5 +1,6 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
+import AddAReview from "./AddAReview";
 
 const Dashbord = () => {
   return (
@@ -18,7 +19,7 @@ const Dashbord = () => {
         <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
           {/* <!-- Sidebar content here --> */}
           <li>
-            <a>Sidebar Item 1</a>
+          <Link path="/dashbord/myreview" element={<AddAReview></AddAReview>}></Link>
           </li>
           <li>
             <a>Sidebar Item 2</a>

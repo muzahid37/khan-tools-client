@@ -4,7 +4,6 @@ import Home from "./Pages/Home/Home";
 import Navbar from "./Pages/Sheared/Navbar";
 import { Route, Routes } from "react-router-dom";
 import Blogs from "./Pages/Blogs/Blogs";
-import MyPortfolio from "./Pages/MyPortfolio/MyPortfolio";
 import Login from "./Pages/Login/Login";
 import SignUp from "./Pages/Login/SignUp";
 import Purchase from "./Pages/Purchase/Purchase ";
@@ -12,6 +11,9 @@ import RequireAuth from "./Pages/Login/RequireAuth";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Dashbord from "./Pages/Dashbord/Dashbord";
+import MyOrder from "./Pages/Dashbord/MyOrder";
+import AddAReview from "./Pages/Dashbord/AddAReview";
+import MyPortfolio from "./Pages/Dashbord/MyPortfolio";
 
 function App() {
   return (
@@ -26,7 +28,11 @@ function App() {
         ></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/signup" element={<SignUp></SignUp>}></Route>
-        <Route path="/dashbord" element={<RequireAuth><Dashbord></Dashbord></RequireAuth>}></Route>
+        <Route path="/dashbord" element={<RequireAuth><Dashbord></Dashbord></RequireAuth>}>
+          <Route index element={<MyOrder></MyOrder>}></Route>
+          <Route path="/dashbord/myreview" element={<AddAReview></AddAReview>}></Route>
+          <Route path="/dashbord/MyPortfolio" element={<MyPortfolio></MyPortfolio>}></Route>
+        </Route>
         <Route
           path="/purchas"
           element={
