@@ -12,7 +12,7 @@ import RequireAuth from './Pages/Login/RequireAuth';
 
 function App() {
   return (
-    <div className="App">
+    <div >
       <Navbar></Navbar>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
@@ -21,6 +21,11 @@ function App() {
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signup' element={<SignUp></SignUp>}></Route>
         <Route path='/purchas' element={
+          <RequireAuth>
+            <Purchase></Purchase>
+          </RequireAuth>
+        }></Route>
+         <Route path='/purchas/:toolId' element={
           <RequireAuth>
             <Purchase></Purchase>
           </RequireAuth>
