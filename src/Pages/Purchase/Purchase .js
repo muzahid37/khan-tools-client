@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
+import { toast } from "react-toastify";
+
 const Purchase = () => {
+  const [user] = useAuthState(auth);
+  // console.log(user);
   const { toolId } = useParams();
 
   const [tools, setTools] = useState([]);
@@ -10,13 +17,47 @@ const Purchase = () => {
       .then((res) => res.json())
       .then((data) => setTools(data));
   }, []);
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+
+    // console.log(user.displayName,tools._id,event.target.tool.value,event.target.quantity.value);
+    const booking = {
+      toolId: tools._id,
+      tool: event.target.tool.value,
+      user: user.email,
+      userName: user.displayName,
+      quantity: event.target.quantity.value,
+    }
+    fetch('http://localhost:5000/booking',{
+        method:'POST',
+        headers:{
+          'content-type':'application/json'
+        },
+        body:JSON.stringify(booking)
+      })
+      .then(res=>res.json())
+      .then(data=>{
+        console.log(data)
+        if(data.success){
+          toast("Thanks for booking")
+        }
+        else{
+         toast.error('sprry! something is worng')
+        }
+        // refetch();
+        //  setTreatment(null);
+       })
+       
+     
+  };
+
   return (
     <div className="hero min-h-screen ">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">
-          
           <div className="card-body ">
-          <h2 className="card-title">{tools.name}</h2>
+            <h2 className="card-title">{tools.name}</h2>
             <p>If a dog chews shoes whose shoes does he choose?</p>
             <h2>
               <small>
@@ -35,34 +76,47 @@ const Purchase = () => {
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl ">
           <div className="card-body">
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Email</span>
-              </label>
+            <form
+              onSubmit={onSubmit}
+              className="grid grid-cols-1 gap-3 justify-items-center mt-2"
+            >
               <input
+                className="input w-full max-w-xs"
                 type="text"
-                placeholder="email"
-                className="input input-bordered"
+                name="name"
+                disabled
+                value={user?.displayName}
+                placeholder="Your name"
               />
-            </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Password</span>
-              </label>
               <input
-                type="text"
-                placeholder={tools.price}
-                className="input input-bordered"
+                className="input w-full max-w-xs"
+                type="email"
+                name="email"
+                disabled
+                value={user?.email}
+                placeholder="Email address"
               />
-              <label className="label">
-                <a href="#" className="label-text-alt link link-hover">
-                  Forgot password?
-                </a>
-              </label>
-            </div>
-            <div className="form-control mt-6">
-              <button className="btn btn-primary">Login</button>
-            </div>
+              <input
+                className="input w-full max-w-xs"
+                type="text"
+                name="tool"
+                disabled
+                value={tools.name}
+                placeholder="Your name"
+              />
+              <input
+                className="input w-full max-w-xs"
+                type="number"
+                name="quantity"
+                placeholder="Number of orders"
+              />
+
+              <input
+                className="btn btn-secondary w-full max-w-xs"
+                type="submit"
+                value="Booking"
+              />
+            </form>
           </div>
         </div>
       </div>
