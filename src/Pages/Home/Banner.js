@@ -1,5 +1,6 @@
 import React from "react";
 import bgImage from ".././../image/banner.jpg";
+import './Banner.css'
 
 const Banner = () => {
   return (
@@ -15,19 +16,17 @@ const Banner = () => {
     //   </button>
 
     //   <div
-        class="hero min-h-screen"
-        style={{background: `url(${bgImage})`}}
+        class="hero min-h-screen "
+        style={{background: `url(${bgImage}) `, backgroundSize: "cover" }}
       >
         <div class="hero-overlay bg-opacity-60"></div>
         <div class="hero-content text-center text-neutral-content">
-          <div class="max-w-md">
-            <h1 class="mb-5 text-5xl font-bold">Hello there</h1>
+          <div class="max-w-md text-white"ba>
+            <h1 class="mb-5 text-5xl font-bold">Tools managements</h1>
             <p class="mb-5">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
+             we are manufactur all kind of tool who use our every day life.
+            
             </p>
-            <button class="btn btn-primary">Get Started</button>
           </div>
         </div>
       </div>

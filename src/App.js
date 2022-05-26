@@ -13,7 +13,8 @@ import "react-toastify/dist/ReactToastify.css";
 import Dashbord from "./Pages/Dashbord/Dashbord";
 import MyOrder from "./Pages/Dashbord/MyOrder";
 import AddAReview from "./Pages/Dashbord/AddAReview";
-import MyPortfolio from "./Pages/Dashbord/MyPortfolio";
+import Footer from "./Pages/Sheared/Footer";
+import MyPortfolio from "./Pages/MyPortfolio/MyPortfolio";
 
 function App() {
   return (
@@ -50,6 +51,7 @@ function App() {
           }
         ></Route>
       </Routes>
+      <Footer></Footer>
       <ToastContainer></ToastContainer>
     </div>
   );

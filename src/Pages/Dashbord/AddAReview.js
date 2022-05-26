@@ -26,7 +26,7 @@ const [user] = useAuthState(auth);
           })
           .then(res=>res.json())
           .then(data=>{
-            console.log(data)
+            // console.log(data)
             if(data.success){
               toast("Thanks for review")
 
@@ -41,7 +41,7 @@ const [user] = useAuthState(auth);
          
       };
     return (
-        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl ">
+        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl mx-auto mt-12">
           <div className="card-body">
             <form
               onSubmit={onSubmit}

@@ -2,7 +2,7 @@ import React from "react";
 
 const Review = ({ review }) => {
   const { user, userName, comment } = review;
-  console.log(user);
+  // console.log(user);
   return (
     <>
       <div className="card w-96 bg-base-100 shadow-xl text-left ">

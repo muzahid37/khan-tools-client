@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 
 const Purchase = () => {
   const [user] = useAuthState(auth);
-  // console.log(user);
+
   const { toolId } = useParams();
 
   const [tools, setTools] = useState([]);
@@ -17,40 +17,36 @@ const Purchase = () => {
       .then((res) => res.json())
       .then((data) => setTools(data));
   }, []);
-  // AddAReview
 
   const onSubmit = (event) => {
     event.preventDefault();
+    console.log(tools.minimunOrder, tools.quantity, user?.displayName);
 
-    // console.log(user.displayName,tools._id,event.target.tool.value,event.target.quantity.value);
     const booking = {
       toolId: tools._id,
+      minimunOrder: tools.minimunOrder,
       tool: event.target.tool.value,
       user: user.email,
       userName: user.displayName,
+      stock: tools.quantity,
       quantity: event.target.quantity.value,
-    }
-    fetch('http://localhost:5000/booking',{
-        method:'POST',
-        headers:{
-          'content-type':'application/json'
-        },
-        body:JSON.stringify(booking)
-      })
-      .then(res=>res.json())
-      .then(data=>{
-        console.log(data)
-        if(data.success){
-          toast("Thanks for booking")
+    };
+    fetch("http://localhost:5000/booking", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(booking),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.success) {
+          toast("Thanks for booking");
+        } else {
+          toast.error("sprry! something is worng");
         }
-        else{
-         toast.error('sprry! something is worng')
-        }
-        // refetch();
-        //  setTreatment(null);
-       })
-       
-     
+      });
   };
 
   return (
@@ -118,6 +114,150 @@ const Purchase = () => {
                 value="Booking"
               />
             </form>
+            {/* <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="form-control w-full max-w-xs">
+              <label className="label">
+                <span className="label-text">Name</span>
+              </label>
+              <input
+                type="text"
+                placeholder="Your Name"
+                disabled
+                value={user?.displayName}
+                className="input input-bordered w-full max-w-xs"
+                {...register("name", {
+                  required: {
+                    value: true,
+                    message: "Name is Required",
+                  },
+                 
+                })}
+              />
+              <label className="label">
+                {errors.name?.type === "required" && (
+                  <span className="label-text-alt text-red-500">
+                    {errors.name.message}
+                  </span>
+                )}
+                {errors.name?.type === "pattern" && (
+                  <span className="label-text-alt text-red-500">
+                    {errors.name.message}
+                  </span>
+                )}
+              </label>
+            </div>
+            <div className="form-control w-full max-w-xs">
+              <label className="label">
+                <span className="label-text">Email</span>
+              </label>
+              <input
+                type="email"
+                placeholder="Your Email"
+                disabled
+                value={user?.email}
+                className="input input-bordered w-full max-w-xs"
+                {...register("email", {
+                  required: {
+                    value: true,
+                    message: "Email is Required",
+                  },
+                  pattern: {
+                    value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
+                    message: "Provide a valid Email",
+                  },
+                })}
+              />
+              <label className="label">
+                {errors.email?.type === "required" && (
+                  <span className="label-text-alt text-red-500">
+                    {errors.email.message}
+                  </span>
+                )}
+                {errors.email?.type === "pattern" && (
+                  <span className="label-text-alt text-red-500">
+                    {errors.email.message}
+                  </span>
+                )}
+              </label>
+            </div>
+            <div className="form-control w-full max-w-xs">
+              <label className="label">
+                <span className="label-text">minimum quantity number</span>
+              </label>
+              <input
+                type="number"
+                placeholder={tools.minimunOrder}
+                className="input input-bordered w-full max-w-xs"
+                {...register("number", {
+                  required: {
+                    value: true,
+                    message: "Password is Required",
+                  },
+                  pattern: {
+                    value: /{tools.minimunOrder}<&&{tool.quantity}/,
+                    message: "Provide a valid Email",
+                  },
+                })}
+              />
+              <label className="label">
+                {errors.password?.type === "required" && (
+                  <span className="label-text-alt text-red-500">
+                    {errors.password.message}
+                  </span>
+                )}
+                {errors.password?.type === "minLength" && (
+                  <span className="label-text-alt text-red-500">
+                    {errors.password.message}
+                  </span>
+                )}
+              </label>
+              </div>
+
+            <div className="form-control w-full max-w-xs">
+              <label className="label">
+                <span className="label-text">Password</span>
+              </label>
+              <input
+                type="number"
+                placeholder="number off quantity"
+                className="input input-bordered w-full max-w-xs"
+                {...register("number", {
+                  required: {
+                    value: true,
+                    message: "Password is Required",
+                  },
+                  pattern: {
+                    // value: ,
+                    message: "Provide a valid Email",
+                  },
+                })}
+              />
+              <label className="label">
+                {errors.password?.type === "required" && (
+                  <span className="label-text-alt text-red-500">
+                    {errors.password.message}
+                  </span>
+                )}
+                {errors.password?.type === "minLength" && (
+                  <span className="label-text-alt text-red-500">
+                    {errors.password.message}
+                  </span>
+                )}
+              </label>
+
+
+            </div>
+
+            
+            <input
+              className="btn w-full max-w-xs text-white btn-primary"
+              type="submit"
+              value="Booking"
+            />
+            <p>
+              
+            </p>
+          </form> */}
           </div>
         </div>
       </div>

@@ -5,6 +5,7 @@ import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfil
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Loading from "../Sheared/Loading";
+import useToken from "../../Hooks/useToken";
 
 const SignUp = () => {
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
@@ -22,11 +23,16 @@ const SignUp = () => {
     formState: { errors },
     handleSubmit,
   } = useForm();
+
+
+  const [token]=useToken(user || gUser)
+
+
   const onSubmit = async(data) => {
     // console.log(data);
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile(data.name);
-    navigate('/')
+    
   };
   if (error || gError||upDrror) {
     signInError = (
@@ -36,9 +42,9 @@ const SignUp = () => {
   if (loading || gLoading||updating) {
     return <Loading></Loading>;
   }
-  if (user || gUser) {
-    // navigate'/'
-    console.log(user || gUser);
+  if (token) {
+    navigate('/')
+  
   }
   return (
     <div className="flex justify-center items-center h-screen">
@@ -70,9 +76,9 @@ const SignUp = () => {
                     {errors.name.message}
                   </span>
                 )}
-                {errors.email?.type === "pattern" && (
+                {errors.name?.type === "pattern" && (
                   <span className="label-text-alt text-red-500">
-                    {errors.email.message}
+                    {errors.name.message}
                   </span>
                 )}
               </label>

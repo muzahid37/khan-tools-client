@@ -3,7 +3,7 @@ import Review  from "./Review";
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
-  console.log(reviews);
+  // console.log(reviews);
   useEffect(() => {
     fetch("http://localhost:5000/review")
       .then((res) => res.json())
