@@ -17,6 +17,7 @@ const Purchase = () => {
       .then((res) => res.json())
       .then((data) => setTools(data));
   }, []);
+  // AddAReview
 
   const onSubmit = (event) => {
     event.preventDefault();
