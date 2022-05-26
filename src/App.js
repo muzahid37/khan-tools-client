@@ -15,6 +15,9 @@ import MyOrder from "./Pages/Dashbord/MyOrder";
 import AddAReview from "./Pages/Dashbord/AddAReview";
 import Footer from "./Pages/Sheared/Footer";
 import MyPortfolio from "./Pages/MyPortfolio/MyPortfolio";
+import MyProfile from "./Pages/Dashbord/MyProfile";
+import UpdateProfile from "./Pages/Dashbord/UpdateProfile";
+import AllUsers from "./Pages/Dashbord/AllUsers";
 
 function App() {
   return (
@@ -23,6 +26,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/blog" element={<Blogs></Blogs>}></Route>
+        <Route path="/updateprofile" element={<UpdateProfile></UpdateProfile>}></Route>
         <Route
           path="/myportfolio"
           element={<MyPortfolio></MyPortfolio>}
@@ -32,8 +36,11 @@ function App() {
         <Route path="/dashbord" element={<RequireAuth><Dashbord></Dashbord></RequireAuth>}>
           <Route index element={<MyOrder></MyOrder>}></Route>
           <Route path="/dashbord/myreview" element={<AddAReview></AddAReview>}></Route>
-          <Route path="/dashbord/MyPortfolio" element={<MyPortfolio></MyPortfolio>}></Route>
-        </Route>
+          <Route path="/dashbord/MyProfile" element={<MyProfile></MyProfile>}></Route>
+          <Route path="/dashbord/allusers" element={<AllUsers></AllUsers>}>
+            </Route>
+          </Route>
+          
         <Route
           path="/purchas"
           element={

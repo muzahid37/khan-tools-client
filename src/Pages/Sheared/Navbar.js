@@ -8,13 +8,15 @@ import Loading from "./Loading";
 
 const Navbar = () => {
   const logout=()=>{
-    signOut(auth)
+    signOut(auth);
+    localStorage.removeItem()
+    
   }
   const [user, loading, ]=useAuthState(auth);
   if(loading){
     <Loading></Loading>
   }
-
+  
   const menuItems=<>
   <li><Link to='/'>Home</Link></li>
   <li><Link to='/myportfolio'>My Portfolio</Link></li>

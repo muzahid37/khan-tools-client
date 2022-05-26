@@ -1,46 +1,39 @@
-import React from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
 
-import { toast } from "react-toastify";
+import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 
-const AddAReview = () => {
+const UpdateProfile = () => {
+   
     
 const [user] = useAuthState(auth);
-    const onSubmit = (event) => {
-        event.preventDefault();
-        // console.log(event.target.comment.value)
+const onSubmit = (event) => {
+    event.preventDefault();
     
-        // console.log(user.displayName,tools._id,event.target.tool.value,event.target.quantity.value);
-        const reviews = {
-         comment: event.target.comment.value,
-          user: user.email,
-          userName: user.displayName,
-        }
-        fetch('http://localhost:5000/review',{
+    const profile = {
+        address: event.target.address.value,
+        education:event.target.education.value,
+        phone:event.target.phone.value,
+       }
+       fetch('http://localhost:5000/profile',{
             method:'POST',
             headers:{
               'content-type':'application/json'
             },
-            body:JSON.stringify(reviews)
+            body:JSON.stringify(profile)
           })
           .then(res=>res.json())
           .then(data=>{
-            if(data.success){
-              toast("Thanks for review")
-
-            }
-            else{
-             toast.error('sprry! something is worng')
-            }
+              console.log(data)
+           
             
             
            })
-           
-         
-      };
+       
+
+}
     return (
-        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl mx-auto mt-12">
+        <div>
+            <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl mx-auto my-12">
           <div className="card-body">
             <form
               onSubmit={onSubmit}
@@ -50,7 +43,7 @@ const [user] = useAuthState(auth);
                 className="input w-full max-w-xs"
                 type="text"
                 name="name"
-                // disabled
+                disabled
                 value={user?.displayName}
                 placeholder="Your name"
               />
@@ -58,16 +51,28 @@ const [user] = useAuthState(auth);
                 className="input w-full max-w-xs"
                 type="email"
                 name="email"
-                // disabled
+                disabled
                 value={user?.email}
                 placeholder="Email address"
               />
               
               <input
                 className="input w-full max-w-xs"
-                type="textarea"
-                name="comment"
-                placeholder="Add your message"
+                type="text"
+                name="education"
+                placeholder="Add your education"
+              />
+               <input
+                className="input w-full max-w-xs"
+                type="text"
+                name="address"
+                placeholder="Add your address"
+              />
+              <input
+                className="input w-full max-w-xs"
+                type="number"
+                name="phone"
+                placeholder="Add your phone number"
               />
 
               <input
@@ -78,7 +83,8 @@ const [user] = useAuthState(auth);
             </form>
           </div>
         </div>
+        </div>
     );
 };
 
-export default AddAReview;
+export default UpdateProfile;
