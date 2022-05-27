@@ -2,7 +2,8 @@ import React from "react";
 
 const HomeInfo = () => {
   return (
-    <div className="stats shadow flex my-12">
+    <div className="stats shadow flex my-12 w-full ">
+      <div className="grid sm:grid-cols-1 lg:grid-cols-3 gap-10 ">
   
   <div className="stat">
     <div className="stat-figure text-primary">
@@ -34,6 +35,7 @@ const HomeInfo = () => {
     <div className="stat-value">Review we have</div>
     <div className="stat-title">3K+</div>
     <div className="stat-desc text-secondary">1k tasks remaining</div>
+  </div>
   </div>
   
 </div>
