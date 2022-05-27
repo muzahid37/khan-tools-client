@@ -28,7 +28,7 @@ const Dashbord = () => {
             <Link to="/dashbord/MyProfile">My profile</Link>
           </li>
            
-            {admin && <li>
+            { <li>
               <Link to="/dashbord/allusers">All users</Link>
             </li>}
             { <li>

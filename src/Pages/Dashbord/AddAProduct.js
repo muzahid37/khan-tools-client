@@ -5,13 +5,15 @@ const AddAProduct = () => {
    
     const onSubmit = (event) => {
         event.preventDefault();
+        console.log( event.target.description.innerText);
         const newTools={
             name: event.target.name.value,
             img:  event.target.image.value,
-            description: event.target.description.value,
+            description: event.target.description.innerText,
             minimunOrder:  event.target.minimumOrderQuantity.value,
             quantity:  event.target.availableQuantity.value,
             price: event.target.price.value,
+            
 
         }
        
@@ -50,12 +52,13 @@ const AddAProduct = () => {
           placeholder="image url"
         />
         
-        <input
-          className="input w-full max-w-xs"
+        <textarea
+          className="textareat w-full max-w-xs"
           type="textarea"
           name="description"
-          placeholder="Tools datails"
-        />
+          placeholder="Tools datails"></textarea>
+       
+       
         
         <input
           className="input w-full max-w-xs"
@@ -79,7 +82,7 @@ const AddAProduct = () => {
         <input
           className="btn btn-secondary w-full max-w-xs"
           type="submit"
-          value="Add Review"
+          value="Add a product"
         />
       </form>
     </div>

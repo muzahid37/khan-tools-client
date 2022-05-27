@@ -23,7 +23,6 @@ const Purchase = () => {
     console.log(tools.minimunOrder, tools.quantity, user?.displayName);
 
     const booking = {
-      toolId: tools._id,
       minimunOrder: tools.minimunOrder,
       tool: event.target.tool.value,
       user: user.email,
@@ -96,10 +95,26 @@ const Purchase = () => {
               <input
                 className="input w-full max-w-xs"
                 type="text"
-                name="tool"
+                name="availableQuantity"
                 disabled
-                value={tools.name}
+                value={tools.quantity}
                 placeholder="Your name"
+              />
+              <input
+                className="input w-full max-w-xs"
+                type="number"
+                name="minimunOrder"
+                disabled
+                value={tools.minimunOrder}
+                placeholder="minimum number of order"
+              />
+              <input
+                className="input w-full max-w-xs"
+                type="number"
+                name="price"
+                disabled
+                value={tools.price}
+                placeholder="Add Price par unit"
               />
               <input
                 className="input w-full max-w-xs"
@@ -114,150 +129,6 @@ const Purchase = () => {
                 value="Booking"
               />
             </form>
-            {/* <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="form-control w-full max-w-xs">
-              <label className="label">
-                <span className="label-text">Name</span>
-              </label>
-              <input
-                type="text"
-                placeholder="Your Name"
-                disabled
-                value={user?.displayName}
-                className="input input-bordered w-full max-w-xs"
-                {...register("name", {
-                  required: {
-                    value: true,
-                    message: "Name is Required",
-                  },
-                 
-                })}
-              />
-              <label className="label">
-                {errors.name?.type === "required" && (
-                  <span className="label-text-alt text-red-500">
-                    {errors.name.message}
-                  </span>
-                )}
-                {errors.name?.type === "pattern" && (
-                  <span className="label-text-alt text-red-500">
-                    {errors.name.message}
-                  </span>
-                )}
-              </label>
-            </div>
-            <div className="form-control w-full max-w-xs">
-              <label className="label">
-                <span className="label-text">Email</span>
-              </label>
-              <input
-                type="email"
-                placeholder="Your Email"
-                disabled
-                value={user?.email}
-                className="input input-bordered w-full max-w-xs"
-                {...register("email", {
-                  required: {
-                    value: true,
-                    message: "Email is Required",
-                  },
-                  pattern: {
-                    value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
-                    message: "Provide a valid Email",
-                  },
-                })}
-              />
-              <label className="label">
-                {errors.email?.type === "required" && (
-                  <span className="label-text-alt text-red-500">
-                    {errors.email.message}
-                  </span>
-                )}
-                {errors.email?.type === "pattern" && (
-                  <span className="label-text-alt text-red-500">
-                    {errors.email.message}
-                  </span>
-                )}
-              </label>
-            </div>
-            <div className="form-control w-full max-w-xs">
-              <label className="label">
-                <span className="label-text">minimum quantity number</span>
-              </label>
-              <input
-                type="number"
-                placeholder={tools.minimunOrder}
-                className="input input-bordered w-full max-w-xs"
-                {...register("number", {
-                  required: {
-                    value: true,
-                    message: "Password is Required",
-                  },
-                  pattern: {
-                    value: /{tools.minimunOrder}<&&{tool.quantity}/,
-                    message: "Provide a valid Email",
-                  },
-                })}
-              />
-              <label className="label">
-                {errors.password?.type === "required" && (
-                  <span className="label-text-alt text-red-500">
-                    {errors.password.message}
-                  </span>
-                )}
-                {errors.password?.type === "minLength" && (
-                  <span className="label-text-alt text-red-500">
-                    {errors.password.message}
-                  </span>
-                )}
-              </label>
-              </div>
-
-            <div className="form-control w-full max-w-xs">
-              <label className="label">
-                <span className="label-text">Password</span>
-              </label>
-              <input
-                type="number"
-                placeholder="number off quantity"
-                className="input input-bordered w-full max-w-xs"
-                {...register("number", {
-                  required: {
-                    value: true,
-                    message: "Password is Required",
-                  },
-                  pattern: {
-                    // value: ,
-                    message: "Provide a valid Email",
-                  },
-                })}
-              />
-              <label className="label">
-                {errors.password?.type === "required" && (
-                  <span className="label-text-alt text-red-500">
-                    {errors.password.message}
-                  </span>
-                )}
-                {errors.password?.type === "minLength" && (
-                  <span className="label-text-alt text-red-500">
-                    {errors.password.message}
-                  </span>
-                )}
-              </label>
-
-
-            </div>
-
-            
-            <input
-              className="btn w-full max-w-xs text-white btn-primary"
-              type="submit"
-              value="Booking"
-            />
-            <p>
-              
-            </p>
-          </form> */}
           </div>
         </div>
       </div>
