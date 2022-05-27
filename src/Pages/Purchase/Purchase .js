@@ -43,15 +43,24 @@ const Purchase = () => {
         if (data.success) {
           toast("Thanks for booking");
         } else {
-          toast.error("sprry! something is worng");
+          toast.error("sorry! something is worng");
         }
       });
   };
 
   return (
-    <div className="hero min-h-screen ">
+    <>
+     <div className="text-secondary text-4xl mx-auto flex-col mx-auto w-3/4 my-12">
+        <h2> User name:{user?.displayName}</h2>
+        <h2> User Email:{user?.email}</h2>
+      </div>  
+      <div className="hero min-h-screen ">
+     
+      
       <div className="hero-content flex-col lg:flex-row-reverse">
+      
         <div className="text-center lg:text-left">
+       
           <div className="card-body ">
             <h2 className="card-title">{tools.name}</h2>
             <p>If a dog chews shoes whose shoes does he choose?</p>
@@ -133,6 +142,8 @@ const Purchase = () => {
         </div>
       </div>
     </div>
+    </>
+
   );
 };
 

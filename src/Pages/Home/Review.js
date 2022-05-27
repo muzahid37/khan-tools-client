@@ -1,13 +1,14 @@
 import React from "react";
 
 const Review = ({ review }) => {
-  const { user, userName, comment } = review;
+  const { user, userName, comment,ratings } = review;
   // console.log(user);
   return (
     <>
-      <div className="card w-96 bg-base-100 shadow-xl text-left m-auto">
+      <div className="card w-96 bg-base-200 shadow-xl text-left m-auto">
         <div className="card-body ">
           <p>{comment}</p>
+          <p className="text-yellow-500">Ratings:{ratings} star</p>
 
           <h2>
             <small className="text-secondary text-2xl">{userName}</small>

@@ -16,6 +16,7 @@ const [user] = useAuthState(auth);
          comment: event.target.comment.value,
           user: user.email,
           userName: user.displayName,
+          ratings:event.target.ratings.value,
         }
         fetch('http://localhost:5000/review',{
             method:'POST',
@@ -68,6 +69,12 @@ const [user] = useAuthState(auth);
                 type="textarea"
                 name="comment"
                 placeholder="Add your message"
+              />
+              <input
+                className="input w-full max-w-xs"
+                type="number"
+                name="ratings"
+                placeholder="Please take ratings out of 5 "
               />
 
               <input
