@@ -7,7 +7,7 @@
 //         const email=user?.email;
 //         console.log(email)
 //         if(email){
-//             fetch(`http://localhost:5000/admin/${email}`, {
+//             fetch(`https://still-shelf-13702.herokuapp.com/admin/${email}`, {
 //                 method:'PUT',
 //                 headers: {
 //                     'content-type': 'application/json',

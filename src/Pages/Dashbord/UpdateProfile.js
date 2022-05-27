@@ -15,7 +15,7 @@ const onSubmit = (event) => {
         phone:event.target.phone.value,
         image:event.target.phone.img,
        }
-       fetch('http://localhost:5000/profile',{
+       fetch('https://still-shelf-13702.herokuapp.com/profile',{
             method:'POST',
             headers:{
               'content-type':'application/json'

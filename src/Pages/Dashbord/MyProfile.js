@@ -8,7 +8,7 @@ const MyProfile = () => {
     const [profiles, setProfiles] = useState([]);
     // console.log(profiles)
     useEffect(() => {
-      fetch('http://localhost:5000/profile')
+      fetch('https://still-shelf-13702.herokuapp.com/profile')
         .then((res) => res.json())
         .then((data) => setProfiles(data));
     }, []);

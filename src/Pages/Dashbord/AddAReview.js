@@ -18,7 +18,7 @@ const [user] = useAuthState(auth);
           userName: user.displayName,
           ratings:event.target.ratings.value,
         }
-        fetch('http://localhost:5000/review',{
+        fetch('https://still-shelf-13702.herokuapp.com/review',{
             method:'POST',
             headers:{
               'content-type':'application/json'

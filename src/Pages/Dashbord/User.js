@@ -5,7 +5,7 @@ const User = ({localUser}) => {
     const{email,role}=localUser;
     console.log(localUser)
     const makeAdmin = () => {
-      fetch(`http://localhost:5000/user/admin/${email}`, {
+      fetch(`https://still-shelf-13702.herokuapp.com/user/admin/${email}`, {
         method: "PUT",
         headers: {
           authorization: `Bearer ${localStorage.getItem("accessToken")}`,

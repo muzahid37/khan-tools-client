@@ -11,7 +11,7 @@ const MyOrder = () => {
   useEffect(() => {
     
    
-    fetch(`http://localhost:5000/booking?user=${email}`)
+    fetch(`https://still-shelf-13702.herokuapp.com/booking?user=${email}`)
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, [user]);

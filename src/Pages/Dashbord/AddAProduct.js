@@ -17,7 +17,7 @@ const AddAProduct = () => {
 
         }
        
-    const url = `http://localhost:5000/tool`;
+    const url = `https://still-shelf-13702.herokuapp.com/tool`;
     console.log(url);
     fetch(url, {
         method: 'POST',

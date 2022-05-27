@@ -5,7 +5,7 @@ import User from "./User";
 const AllUsers = () => {
     const[localUsers, setLocalUsers]=useState([]);
     useEffect(()=>{
-        fetch('http://localhost:5000/user', {
+        fetch('https://still-shelf-13702.herokuapp.com/user', {
             method: 'GET',
             headers:{
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`

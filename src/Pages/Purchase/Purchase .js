@@ -13,7 +13,7 @@ const Purchase = () => {
 
   const [tools, setTools] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/tool/${toolId}`)
+    fetch(`https://still-shelf-13702.herokuapp.com/tool/${toolId}`)
       .then((res) => res.json())
       .then((data) => setTools(data));
   }, []);
@@ -30,7 +30,7 @@ const Purchase = () => {
       stock: tools.quantity,
       quantity: event.target.quantity.value,
     };
-    fetch("http://localhost:5000/booking", {
+    fetch("https://still-shelf-13702.herokuapp.com/booking", {
       method: "POST",
       headers: {
         "content-type": "application/json",
