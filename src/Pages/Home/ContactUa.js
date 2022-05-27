@@ -8,19 +8,19 @@ const ContactUa = () => {
       <div class="card w-96 bg-base-100 shadow-xl mx-auto my-12 w-3/4 p-8">
       <input
         type="text"
-        placeholder="Type here"
+        placeholder="Type your name"
         class="input input-bordered w-full my-4"
       />
        <input
-        type="text"
-        placeholder="Type here"
+        type="email"
+        placeholder="email address"
         class="input input-bordered w-full my-4"
       />
-       <input
-        type="text"
+       <textarea
+        type="textarea"
         placeholder="Type here"
         class="input input-bordered w-full my-4"
-      />
+      ></textarea>
       <input type="submit" value='submit' className="btn btn-primary my-4" />
         
       </div>

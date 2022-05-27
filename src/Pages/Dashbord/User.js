@@ -27,8 +27,13 @@ const User = ({localUser}) => {
     <tr>
       <th>1</th>
       <td>{email}</td>
-      <td> {role !== "admin" && (
+      {/* <td> {role !== "admin" && (
           <button className="btn btn-xs" onClick={makeAdmin}>
+            Make Admin
+          </button>
+        )}</td> */}
+        <td>{ role !== "admin" && (
+          <button className="btn btn-xs">
             Make Admin
           </button>
         )}</td>

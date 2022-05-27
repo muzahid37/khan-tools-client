@@ -13,6 +13,8 @@ const Navbar = () => {
     
   }
   const [user, loading, ]=useAuthState(auth);
+  const email = user?.email;
+  const name = user?.displayName;
   if(loading){
     <Loading></Loading>
   }
@@ -25,8 +27,11 @@ const Navbar = () => {
   {
     user&&<li><Link to='/dashbord'>Dashbord</Link></li>
   }
+
   <li>{ user?<button onClick={logout} className="btn btn-ghost">Sign out </button>:<Link to='/login'>Login</Link>}</li>
-  
+  {
+    user&&<li className="flex content-around text-primary"> User Name:  {name}</li>
+  }
   </>
   return (
     <div >
@@ -54,6 +59,7 @@ const Navbar = () => {
               className="menu text-black menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
             {menuItems}
+           
             </ul>
           </div>
           <Link to='/' className="btn btn-ghost normal-case text-xl"> <img src='https://i.ibb.co/b53Z2s6/download-3-1.png' alt="" /> </Link>

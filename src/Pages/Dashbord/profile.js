@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import auth from "../../firebase.init";
 
 const Profile = ({ profile }) => {
-  const { address, education, phone,image } = profile;
+  const { address, education, phone,image } = profile
 
   const [user] = useAuthState(auth);
   const email = user?.email;
