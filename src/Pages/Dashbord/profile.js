@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import auth from "../../firebase.init";
 
 const Profile = ({ profile }) => {
-  const { address, education, phone } = profile;
+  const { address, education, phone,image } = profile;
 
   const [user] = useAuthState(auth);
   const email = user?.email;
@@ -13,7 +13,7 @@ const Profile = ({ profile }) => {
     <>
       <div className="avatar m-auto mt-7">
         <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-          <img src="https://api.lorem.space/image/shoes?w=400&h=225" />
+          <img src={image} />
         </div>
       </div>
 

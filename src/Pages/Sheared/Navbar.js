@@ -30,7 +30,7 @@ const Navbar = () => {
   </>
   return (
     <div >
-      <div className="navbar bg-neutral text-white">
+      <div className="navbar ">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex="0" className="btn btn-ghost lg:hidden">
@@ -50,13 +50,13 @@ const Navbar = () => {
               </svg>
             </label>
             <ul
-              tabIndex="0"
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+              tabIndex="0" 
+              className="menu text-black menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
             {menuItems}
             </ul>
           </div>
-          <Link to='/' className="btn btn-ghost normal-case text-xl">MY TOOLS</Link>
+          <Link to='/' className="btn btn-ghost normal-case text-xl"> <img src='https://i.ibb.co/b53Z2s6/download-3-1.png' alt="" /> </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0">

@@ -15,7 +15,7 @@ const MyProjets = () => {
           <p>car-werehouse</p>
           <div className="card-actions justify-end">
             <a href="https://car-werehouse.web.app/">
-              <button className="btn btn-primary">Exploe More</button>
+              <button className="btn btn-primary">Exploe site</button>
             </a>
           </div>
         </div>

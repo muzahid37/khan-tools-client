@@ -4,19 +4,13 @@ import User from "./User";
 
 const AllUsers = () => {
     const[localUsers, setLocalUsers]=useState([]);
-    const navigate=useNavigate();
     useEffect(()=>{
         fetch('http://localhost:5000/user', {
             method: 'GET',
             headers:{
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
             }
-        }).then(res=>{
-            console.log("res",res)
-            if(res.status==401||res.status==403){
-                navigate('/')
-            }
-            return res.json()})
+        }).then(res=>res.json())
         .then(data=>setLocalUsers(data))
     },[])
   return (

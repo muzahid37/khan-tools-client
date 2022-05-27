@@ -13,6 +13,7 @@ const onSubmit = (event) => {
         address: event.target.address.value,
         education:event.target.education.value,
         phone:event.target.phone.value,
+        image:event.target.phone.img,
        }
        fetch('http://localhost:5000/profile',{
             method:'POST',
@@ -39,6 +40,12 @@ const onSubmit = (event) => {
               onSubmit={onSubmit}
               className="grid grid-cols-1 gap-3 justify-items-center mt-2"
             >
+              <input
+                className="input w-full max-w-xs"
+                type="text"
+                name="img"
+                placeholder="Your profile photo"
+              />
               <input
                 className="input w-full max-w-xs"
                 type="text"

@@ -9,7 +9,7 @@ const AddAProduct = () => {
         const newTools={
             name: event.target.name.value,
             img:  event.target.image.value,
-            description: event.target.description.innerText,
+            description: event.target.description.value,
             minimunOrder:  event.target.minimumOrderQuantity.value,
             quantity:  event.target.availableQuantity.value,
             price: event.target.price.value,
@@ -52,12 +52,13 @@ const AddAProduct = () => {
           placeholder="image url"
         />
         
-        <textarea
-          className="textareat w-full max-w-xs"
-          type="textarea"
+        
+              <input
+          className="textarea w-full max-w-xs"
+          type="text"
           name="description"
-          placeholder="Tools datails"></textarea>
-       
+          placeholder="Tools datails"
+        />
        
         
         <input

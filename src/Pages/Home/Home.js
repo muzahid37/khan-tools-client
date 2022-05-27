@@ -1,6 +1,8 @@
 import React from 'react';
 import Banner from './Banner';
+import ContactUa from './ContactUa';
 import HomeInfo from './HomeInfo';
+import MyLocation from './MyLocation';
 import Reviews from './Reviews';
 import Tools from './Tools';
 
@@ -11,6 +13,9 @@ const Home = () => {
             <HomeInfo></HomeInfo>
             <Tools></Tools>
             <Reviews></Reviews>
+            <ContactUa></ContactUa>
+            <MyLocation></MyLocation>
+            
         </div>
     );
 };

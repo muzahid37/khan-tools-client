@@ -5,7 +5,7 @@ const Review = ({ review }) => {
   // console.log(user);
   return (
     <>
-      <div className="card w-96 bg-base-100 shadow-xl text-left ">
+      <div className="card w-96 bg-base-100 shadow-xl text-left m-auto">
         <div className="card-body ">
           <p>{comment}</p>
 

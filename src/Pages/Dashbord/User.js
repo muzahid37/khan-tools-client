@@ -3,22 +3,35 @@ import { toast } from "react-toastify";
 
 const User = ({localUser}) => {
     const{email,role}=localUser;
-    const makeAdmin=()=>{
-        fetch(`http://localhost:5000/user/admin/${email}`,{
-            method:'PUT',
-        })
-        .then(res=>res.json())
-        .then(data=>{
+    console.log(localUser)
+    const makeAdmin = () => {
+      fetch(`http://localhost:5000/user/admin/${email}`, {
+        method: "PUT",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
+        .then((res) => {
+            if(res.status===403){
+                toast.error(`Failed to make an admin`)
+            }
+          return res.json()})
+        .then((data) => {
+          if (data.modifiedCount > 0) {
             
-            console.log(data)
-            toast.success(`Made an admin Succsessfully`)
-        })
+            toast.success(`Successfully made an admin`);
+          }
+        });
     }
   return (
     <tr>
       <th>1</th>
       <td>{email}</td>
-      <td>{role!=='admin'&&<button onClick={makeAdmin} className="btn btn-xs">Make admin</button>}</td>
+      <td> {role !== "admin" && (
+          <button className="btn btn-xs" onClick={makeAdmin}>
+            Make Admin
+          </button>
+        )}</td>
       <td><button className="btn btn-xs">Remove user</button></td>
     </tr>
   );
