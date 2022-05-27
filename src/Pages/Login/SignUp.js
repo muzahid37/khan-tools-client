@@ -25,7 +25,7 @@ const SignUp = () => {
   } = useForm();
 
 
-  // const [token]=useToken(user || gUser)
+  const [token]=useToken(user || gUser)
 
 
   const onSubmit = async(data) => {
@@ -42,10 +42,10 @@ const SignUp = () => {
   if (loading || gLoading||updating) {
     return <Loading></Loading>;
   }
-  // if (token) {
-  //   navigate("/")
+  if (token) {
+    navigate("/")
   
-  // }
+  }
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="card w-96 bg-base-100 shadow-xl ">

@@ -6,7 +6,7 @@ import Profile from "./profile";
 
 const MyProfile = () => {
     const [profiles, setProfiles] = useState([]);
-    console.log(profiles)
+    // console.log(profiles)
     useEffect(() => {
       fetch('http://localhost:5000/profile')
         .then((res) => res.json())

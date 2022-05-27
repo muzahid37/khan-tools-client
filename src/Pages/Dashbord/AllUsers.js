@@ -1,15 +1,27 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import User from "./User";
 
 const AllUsers = () => {
     const[localUsers, setLocalUsers]=useState([]);
+    const navigate=useNavigate();
     useEffect(()=>{
-        fetch('http://localhost:5000/user')
-        .then(res=>res.json())
+        fetch('http://localhost:5000/user', {
+            method: 'GET',
+            headers:{
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        }).then(res=>{
+            console.log("res",res)
+            if(res.status==401||res.status==403){
+                navigate('/')
+            }
+            return res.json()})
         .then(data=>setLocalUsers(data))
     },[])
   return (
     <div>
+        <h2 className="text-4xl font-bold ">All user</h2>
       <div class="overflow-x-auto my-12">
         <table class="table table-zebra w-full">
           {/* <!-- head --> */}

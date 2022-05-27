@@ -9,7 +9,7 @@ import Loading from "./Loading";
 const Navbar = () => {
   const logout=()=>{
     signOut(auth);
-    localStorage.removeItem()
+    localStorage.removeItem('accessToken');
     
   }
   const [user, loading, ]=useAuthState(auth);
@@ -56,7 +56,7 @@ const Navbar = () => {
             {menuItems}
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+          <Link to='/' className="btn btn-ghost normal-case text-xl">MY TOOLS</Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0">

@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { useEffect, useState } from "react";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import Order from './Order'
 
 const MyOrder = () => {
   const [user]=useAuthState(auth);
@@ -11,16 +13,36 @@ const MyOrder = () => {
     console.log(url);
      fetch(`url`)
      .then(res=>res.json())
-     .then(data=>console.log(data))
+     .then(data=>setOrders(data))
   },[user])
-  
-  
   return (
     <div>
-      <h2>order:{orders.user}</h2>
-      
-    </div>
+        <h2 className="text-4xl font-bold ">All Orders</h2>
+      <div class="overflow-x-auto my-12">
+        <table class="table table-zebra w-full">
+          {/* <!-- head --> */}
+          <thead>
+            <tr>
+              <th></th>
+              <th>Name</th>
+              <th>Job</th>
+              <th>Favorite Color</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+                orders.map(order=><Order
+                key='order._id'
+                order={order}
+                ></Order>)
+            }
+            
+            
+          </tbody>
+        </table>
+        </div>
+      </div>
+    
   );
 };
-
 export default MyOrder;

@@ -18,6 +18,9 @@ import MyPortfolio from "./Pages/MyPortfolio/MyPortfolio";
 import MyProfile from "./Pages/Dashbord/MyProfile";
 import UpdateProfile from "./Pages/Dashbord/UpdateProfile";
 import AllUsers from "./Pages/Dashbord/AllUsers";
+import RequireAdmin from "./Pages/Login/RequireAdmin";
+import NothingPage from "./Pages/Blogs/NothingPage";
+import AddAProduct from "./Pages/Dashbord/AddAProduct";
 
 function App() {
   return (
@@ -26,21 +29,48 @@ function App() {
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/blog" element={<Blogs></Blogs>}></Route>
-        <Route path="/updateprofile" element={<UpdateProfile></UpdateProfile>}></Route>
+        <Route
+          path="/updateprofile"
+          element={<UpdateProfile></UpdateProfile>}
+        ></Route>
         <Route
           path="/myportfolio"
           element={<MyPortfolio></MyPortfolio>}
         ></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/signup" element={<SignUp></SignUp>}></Route>
-        <Route path="/dashbord" element={<RequireAuth><Dashbord></Dashbord></RequireAuth>}>
+        <Route path='*' element={<NothingPage></NothingPage>}></Route>
+        <Route
+          path="/dashbord"
+          element={
+            <RequireAuth>
+              <Dashbord></Dashbord>
+            </RequireAuth>
+          }
+        >
           <Route index element={<MyOrder></MyOrder>}></Route>
-          <Route path="/dashbord/myreview" element={<AddAReview></AddAReview>}></Route>
-          <Route path="/dashbord/MyProfile" element={<MyProfile></MyProfile>}></Route>
-          <Route path="/dashbord/allusers" element={<AllUsers></AllUsers>}>
-            </Route>
-          </Route>
-          
+          <Route
+            path="/dashbord/myreview"
+            element={<AddAReview></AddAReview>}
+          ></Route>
+          <Route
+            path="/dashbord/addaproduct"
+            element={<AddAProduct></AddAProduct>}
+          ></Route>
+          <Route
+            path="/dashbord/MyProfile"
+            element={<MyProfile></MyProfile>}
+          ></Route>
+          <Route
+            path="/dashbord/allusers"
+            element={
+              
+                <AllUsers></AllUsers>
+              
+            }
+          ></Route>
+        </Route>
+
         <Route
           path="/purchas"
           element={
